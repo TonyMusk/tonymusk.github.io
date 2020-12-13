@@ -41,7 +41,7 @@
        var d = new Date(2019, 8, 30, 18, 00, 00, 00);
        var dif = Date.now() - d.getTime();
        var s = Math.floor(dif / 1000);
-       var hairGrowthSpeed = 1.0 / (2678400)
+       var hairGrowthSpeed = 1.1 / (2678400)
        var hairLength = (s * hairGrowthSpeed).toFixed(6)
        document.getElementById("hairLength").innerHTML = hairLength + " cm";
     }
@@ -76,14 +76,30 @@
         </div>
       </div>
       <div class="row align-items-center" style="margin-top: 40px;">
-        <div class="col-12">
-          <h4> Hair length: </h4>
-          <div id="hairLength">
+        <div class="col-6 offset-3">
+          <table class="table table-borderless">
 
-          </div>
+          <tbody>
+            <tr>
+              <th class="text-left" scope="row">HairLength </th>
+              <td><div id="hairLength">
+              </div></td>
+            </tr>
+            <tr>
+              <th class="text-left" scope="row">Current Pages: </th>
+              <td>61 (Raw: 46)</td>
+            </tr>
+            <tr>
+              <th class="text-left" scope="row">Lines of Code: </th>
+              <td>8.9k</td>
+            </tr>
+          </tbody>
+        </table>
         </div>
       </div>
+
     </div>
+
   </div>
 </body>
 
