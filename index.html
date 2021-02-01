@@ -27,6 +27,49 @@
     .fill-height {
       height: 100%;
     }
+
+    ul.timeline {
+      list-style-type: none;
+      position: relative;
+    }
+
+    ul.timeline:before {
+      content: ' ';
+      background: #d4d9df;
+      display: inline-block;
+      position: absolute;
+      left: 29px;
+      width: 2px;
+      height: 100%;
+      z-index: 400;
+    }
+
+    ul.timeline>li {
+      margin: 20px 0;
+      padding-left: 20px;
+    }
+
+    .active::before{
+      /* 54, 155, 76 */
+      border: 3px solid rgb(54,155,76);
+    }
+
+    .notActive::before{
+      border: 3px solid #d4d9df;
+    }
+
+    ul.timeline > li:before {
+    content: ' ';
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
   </style>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -38,17 +81,19 @@
     const states = ["Nope", "Why are you even asking?", "Aks again tomorow.", "You know the answer.", "Not today", "Busy making a website", "Busy making an app", "Busy doing other things", "Probably @Training. So no."];
 
     function setCurrentHairLength() {
-       var d = new Date(2019, 8, 30, 18, 00, 00, 00);
-       var dif = Date.now() - d.getTime();
-       var s = Math.floor(dif / 1000);
-       var hairGrowthSpeed = 1.3 / (2678400)
-       var hairLength = (s * hairGrowthSpeed).toFixed(6)
-       document.getElementById("hairLength").innerHTML = hairLength + " cm";
+      var d = new Date(2019, 8, 30, 18, 00, 00, 00);
+      var dif = Date.now() - d.getTime();
+      var s = Math.floor(dif / 1000);
+      var hairGrowthSpeed = 1.3 / (2678400)
+      var hairLength = (s * hairGrowthSpeed).toFixed(6)
+      document.getElementById("hairLength").innerHTML = hairLength + " cm";
     }
 
+// 41.206.153,816840425 -> 476d 22h  9min 13,00s
+// 41.190.635,579313    -> 476d 17h 50min 35,58s
     $('document').ready(function() {
-      const random = Math.floor(Math.random() * states.length);
-      document.getElementById("answer").innerHTML = states[random];
+      // const random = Math.floor(Math.random() * states.length);
+      // document.getElementById("answer").innerHTML = states[random];
       setCurrentHairLength()
 
       window.setInterval(setCurrentHairLength, 100);
@@ -62,7 +107,7 @@
 
   <div class="jumbotron d-flex align-items-center min-vh-100">
     <div class="container text-center">
-      <div class="row align-items-center">
+      <!-- <div class="row align-items-center">
         <div class="col-12 justify-content-center">
           <div class="centerBlock">
             Is Konstantin Finished with his Thesis?<br>
@@ -74,35 +119,54 @@
             <div id="answer"> </div>
           </h1>
         </div>
-      </div>
+      </div> -->
       <div class="row align-items-center" style="margin-top: 40px;">
         <div class="col-12 justify-content-center">
+          <div class="col-md-6 offset-md-3" style="margin-bottom:50px;">
+            <h1>Road to M.Sc.</h1>
+            <div class="centerBlock">
+            <ul class="timeline text-left">
+              <li class="notActive">
+                <div style="text-decoration: line-through;color:gray;">Writing</div>
+              </li >
+              <li class="notActive">
+              <div style="text-decoration: line-through;color:gray;">Review</div>
+              </li>
+              <li   class="active">
+                Revision
+              </li>
+              <li style="color:gray;"  class="notActive">
+                Submitted
+              </li>
+            </ul>
+          </div>
+          </div>
           <div class="centerBlock">
             <h5> Meanwhile some fun facts: </h5><br>
           </div>
         </div>
         <div class="col-sm-12 col-md-6 offset-md-3">
           <table class="table table-borderless">
-
-          <tbody>
-            <tr>
-              <th class="text-left" scope="row">HairLength </th>
-              <td><div id="hairLength">
-              </div></td>
-            </tr>
-            <tr>
-              <th class="text-left" scope="row">Current Pages: </th>
-              <td>61 (Raw: 46)</td>
-            </tr>
-            <tr>
-              <th class="text-left" scope="row">Lines of Code: </th>
-              <td>8.9k</td>
-            </tr>
-          </tbody>
-        </table>
+            <tbody>
+              <tr>
+                <th class="text-left" scope="row">HairLength </th>
+                <td>
+                  <div id="hairLength">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th class="text-left" scope="row">Current Pages: </th>
+                <td>63 (Raw: 48)</td>
+              </tr>
+              <tr>
+                <th class="text-left" scope="row">Lines of Code: </th>
+                <td>8.9k</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-
     </div>
 
   </div>
