@@ -11,6 +11,16 @@
 
   <title>Thesis State</title>
   <style>
+
+    h1 {
+      font-size: 7rem;
+      color: red;
+    }
+
+    h4{
+      color: gray;
+    }
+
     .centerBlock {
       display: table;
       margin: auto;
@@ -21,54 +31,19 @@
     }
 
     body {
-      min-height: 100%
+      min-height: 100%;
+      background-color: black;
+    }
+
+    .jumbotron{
+      background-color: black;
     }
 
     .fill-height {
       height: 100%;
     }
 
-    ul.timeline {
-      list-style-type: none;
-      position: relative;
-    }
 
-    ul.timeline:before {
-      content: ' ';
-      background: #d4d9df;
-      display: inline-block;
-      position: absolute;
-      left: 29px;
-      width: 2px;
-      height: 100%;
-      z-index: 400;
-    }
-
-    ul.timeline>li {
-      margin: 20px 0;
-      padding-left: 20px;
-    }
-
-    .active::before{
-      /* 54, 155, 76 */
-      border: 3px solid rgb(54,155,76);
-    }
-
-    .notActive::before{
-      border: 3px solid #d4d9df;
-    }
-
-    ul.timeline > li:before {
-    content: ' ';
-    background: white;
-    display: inline-block;
-    position: absolute;
-    border-radius: 50%;
-    left: 20px;
-    width: 20px;
-    height: 20px;
-    z-index: 400;
-}
 
   </style>
 
@@ -78,25 +53,43 @@
 
 
   <script type="text/javascript">
-    const states = ["Nope", "Why are you even asking?", "Aks again tomorow.", "You know the answer.", "Not today", "Busy making a website", "Busy making an app", "Busy doing other things", "Probably @Training. So no."];
 
-    function setCurrentHairLength() {
-      var d = new Date(2019, 8, 30, 18, 00, 00, 00);
-      var dif = Date.now() - d.getTime();
-      var s = Math.floor(dif / 1000);
-      var hairGrowthSpeed = 1.3 / (2678400)
-      var hairLength = (s * hairGrowthSpeed).toFixed(6)
-      document.getElementById("hairLength").innerHTML = hairLength + " cm";
+  // Set the date we're counting down to
+  var countDownDate = new Date("Aug 14, 2021 23:59:59").getTime();
+
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "Finito";
     }
+  }, 1000);
+
 
 // 41.206.153,816840425 -> 476d 22h  9min 13,00s
 // 41.190.635,579313    -> 476d 17h 50min 35,58s
     $('document').ready(function() {
       // const random = Math.floor(Math.random() * states.length);
       // document.getElementById("answer").innerHTML = states[random];
-      setCurrentHairLength()
 
-      window.setInterval(setCurrentHairLength, 100);
     });
   </script>
 </head>
@@ -106,7 +99,8 @@
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
   <div class="jumbotron d-flex align-items-center min-vh-100">
-    <div class="container text-center">
+    <div class="container text-center pyro">
+      <div class="before"></div>
       <!-- <div class="row align-items-center">
         <div class="col-12 justify-content-center">
           <div class="centerBlock">
@@ -122,9 +116,13 @@
       </div> -->
       <div class="row align-items-center" style="margin-top: 40px;">
         <div class="col-12 justify-content-center">
-          <div class="col-md-6 offset-md-3" style="margin-bottom:50px;">
-            <h1>Road to M.Sc.</h1>
-            <div class="centerBlock">
+
+            <!-- <h1>Road to M.Sc.</h1> -->
+            <h4> Time for Niklas to find a Date </h4>
+            <h1 id="demo"></h1>
+
+
+            <!-- <div class="centerBlock">
             <ul class="timeline text-left">
               <li class="notActive">
                 <div style="text-decoration: line-through;color:gray;">Writing</div>
@@ -137,35 +135,13 @@
               </li>
               <li style="color:gray;"  class="notActive">
                 Submitted
-              </li>
-            </ul>
-          </div>
-          </div>
-          <div class="centerBlock">
-            <h5> Meanwhile some fun facts: </h5><br>
+              </li> -->
+
           </div>
         </div>
-        <div class="col-sm-12 col-md-6 offset-md-3">
-          <table class="table table-borderless">
-            <tbody>
-              <tr>
-                <th class="text-left" scope="row">HairLength </th>
-                <td>
-                  <div id="hairLength">
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th class="text-left" scope="row">Current Pages: </th>
-                <td>63 (Raw: 48)</td>
-              </tr>
-              <tr>
-                <th class="text-left" scope="row">Lines of Code: </th>
-                <td>8.9k</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+
+
+        <div class="after"></div>
       </div>
     </div>
 
